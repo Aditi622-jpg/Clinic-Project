@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Sunshine Clinic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="homepage">
+    <header class="header">
+        <div class="logo">➕</div>
+        <h1>Welcome to Sunshine Clinic</h1>
+        <p class="tagline">Your health, our priority</p>
+    </header>
+
+    <!-- Doctor Info -->
+    <section class="doctor-info" style="text-align:center; margin:20px auto; font-size:22px; font-weight:bold;">
+        <p>👩‍⚕️ Dr. Christina George (MBBS — Kasturba Medical College, Manipal; MD — AIIMS Jodhpur)</p>
+        <p>Sunshine Clinic, 123 MG Road, Bengaluru</p>
+    </section>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Compassionate Care, Modern Facilities</h2>
+            <p>
+                Experience secure online appointment booking, AI-powered patient intake summaries,
+                OTP-protected admin access, and smart appointment reminders—all in one platform.
+            </p>
+            <div class="buttons">
+                <a href="{{ url_for('book') }}" class="btn">📅 Book Appointment</a>
+                <a href="{{ url_for('admin_login') }}" class="btn">🔐 Admin Login</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="card">🤖 <h3>AI Intake Summary</h3><p>Smart patient data capture.</p></div>
+        <div class="card">🔒 <h3>Secure OTP Login</h3><p>Protect admin access.</p></div>
+        <div class="card">📅 <h3>Appointment Booking</h3><p>Easy online scheduling.</p></div>
+        <div class="card">⏰ <h3>Reminders</h3><p>Never miss an appointment.</p></div>
+    </section>
+
+    <!-- Footer below features -->
+    <footer style="text-align:center; margin:40px auto; font-size:16px; font-weight:bold;">
+        <p>© 2026 Sunshine Clinic | Flask • SQLite • AI • OTP Authentication</p>
+    </footer>
+</body>
+</html>

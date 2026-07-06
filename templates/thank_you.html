@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .thank-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #ffffffee;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .thank-container h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .thank-container p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .thank-container a.button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .thank-container a.button:hover {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-container">
+        <h1>🙏 Thank You!</h1>
+        <p>Your feedback has been submitted successfully.</p>
+        <a class="button" href="/admin_dashboard">⬅ Back to Dashboard</a>
+    </div>
+</body>
+</html>

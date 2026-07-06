@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        .otp-box {
+            background: #fff;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+        .countdown {
+            font-size: 20px;
+            color: red;
+            margin-top: 10px;
+        }
+        .demo-message {
+            background: #ffeaa7;
+            color: #2c3e50;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="otp-box">
+        <h2>Verify Your Booking</h2>
+
+        <!-- Demo disclaimer -->
+        <div class="demo-message">
+            ⚠️ This OTP is shown here for demo purposes only.<br>
+            In a real system, the OTP will be sent securely to the registered device of the patient.
+        </div>
+
+        <p>Your OTP is: <strong>{{ otp }}</strong></p>
+        <form method="post" action="/verify_patient_otp">
+            <input type="text" name="otp" placeholder="Enter OTP" required>
+            <br><br>
+            <button type="submit">Verify</button>
+        </form>
+        <p class="countdown">OTP expires in <span id="timer">300</span> seconds</p>
+    </div>
+
+    <script>
+        let timeLeft = 300;
+        let timerElement = document.getElementById("timer");
+
+        let countdown = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = "Expired";
+                alert("OTP has expired. Please try booking again.");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

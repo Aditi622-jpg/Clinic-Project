@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment - Sunshine Clinic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Book Your Appointment</h1>
+
+    <form action="{{ url_for('submit') }}" method="POST">
+        <!-- Name -->
+        <label for="name">Full Name (alphabets only):</label>
+        <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Only alphabets allowed" required>
+
+        <!-- Age -->
+        <label for="age">Age (1–100):</label>
+        <input type="number" id="age" name="age" min="1" max="100" required>
+
+        <!-- Gender -->
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" required>
+
+        <!-- Phone -->
+        <label for="phone">Phone (12 digits):</label>
+        <input type="text" id="phone" name="phone" pattern="\d{12}" title="Enter exactly 12 digits" required>
+
+        <!-- Appointment Date -->
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
+
+        <!-- Appointment Time -->
+        <label for="appointment_time">Appointment Time:</label>
+        <select id="appointment_time" name="appointment_time" required>
+            <option value="">-- Select a slot --</option>
+            <option value="09:00">09:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="15:00">03:00 PM</option>
+            <option value="16:00">04:00 PM</option>
+        </select>
+
+        <!-- Symptoms -->
+        <label for="symptoms">Symptoms:</label>
+        <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+
+        <!-- Submit -->
+        <input type="submit" value="Book Appointment">
+    </form>
+</body>
+</html>

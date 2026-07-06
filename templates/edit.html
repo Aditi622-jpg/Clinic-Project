@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Edit Appointment</h1>
+    <!-- Post back to the same /edit/<id> route -->
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ appointment[1] }}">
+
+        <label>Age:</label>
+        <input type="number" name="age" value="{{ appointment[2] }}">
+
+        <label>Gender:</label>
+        <input type="text" name="gender" value="{{ appointment[3] }}">
+
+        <label>Phone:</label>
+        <input type="text" name="phone" value="{{ appointment[4] }}">
+
+        <label>Appointment Date:</label>
+        <input type="date" name="appointment_date" value="{{ appointment[5] }}">
+
+        <label>Symptoms:</label>
+        <textarea name="symptoms" rows="4">{{ appointment[6] }}</textarea>
+
+        <!-- ✅ Doctor’s Advice field -->
+        <label>Treatment & Rest Advice:</label>
+        <textarea name="treatment_plan" rows="4">{{ appointment[7] }}</textarea>
+
+        <input type="submit" value="Update">
+    </form>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a class="button" href="/appointments">Back to Appointments</a>
+    </div>
+</body>
+</html>

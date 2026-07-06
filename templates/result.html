@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .page-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffffee;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .qr-section {
+            margin: 20px 0;
+        }
+        .treatment-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 5px solid #27ae60;
+            text-align: left;
+        }
+        .treatment-section h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .feedback-container {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .feedback-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .feedback-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            color: #34495e;
+        }
+        .feedback-container select,
+        .feedback-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #6a89cc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        .feedback-container textarea {
+            resize: vertical;
+        }
+        .feedback-container input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .feedback-container input[type="submit"]:hover {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <h1>Appointment Status</h1>
+
+        <!-- Appointment summary -->
+        <p>{{ summary }}</p>
+
+        <!-- QR code section -->
+        <p>Consultation completed. Please scan the QR code for payment (demo only):</p>
+        <div class="qr-section">
+            <img src="{{ url_for('static', filename='qr_codes/demo.png') }}" alt="Dummy QR Code">
+        </div>
+
+        <!-- ✅ Doctor’s Advice Section -->
+        {% if treatment_plan %}
+        <div class="treatment-section">
+            <h2>Doctor’s Advice 🩺</h2>
+            <p>{{ treatment_plan }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Feedback Form -->
+        <div class="feedback-container">
+            <h2>We value your feedback 💬</h2>
+            <form action="/submit_feedback/{{ appointment_id }}" method="POST">
+                <label for="rating">Rate your experience:</label>
+                <select name="rating" id="rating" required>
+                    <option value="">-- Select --</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Good</option>
+                    <option value="3">⭐⭐⭐ Average</option>
+                    <option value="2">⭐⭐ Poor</option>
+                    <option value="1">⭐ Very Poor</option>
+                </select>
+
+                <label for="comments">Your Comments:</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required></textarea>
+
+                <input type="submit" value="Submit Feedback">
+            </form>
+        </div>
+
+        <!-- Back button -->
+        <div style="text-align:center; margin-top:20px;">
+            <a class="button" href="/admin_dashboard">⬅ Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

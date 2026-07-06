@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor’s Advice Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-container input {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .search-container input:focus {
+            outline: none;
+            border-color: #0056b3;
+        }
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        tr:hover {
+            background: #eaf4ff;
+        }
+    </style>
+    <script>
+        function filterTable() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toLowerCase();
+            let table = document.getElementById("adviceTable");
+            let trs = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < trs.length; i++) {
+                let tds = trs[i].getElementsByTagName("td");
+                let showRow = false;
+                for (let j = 0; j < tds.length; j++) {
+                    if (tds[j].innerText.toLowerCase().indexOf(filter) > -1) {
+                        showRow = true;
+                        break;
+                    }
+                }
+                trs[i].style.display = showRow ? "" : "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Doctor’s Advice Records 🩺</h1>
+
+    <!-- ✅ Search bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search by patient, date, symptoms, or advice...">
+    </div>
+
+    <table id="adviceTable">
+        <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Symptoms</th>
+            <th>Doctor’s Advice</th>
+        </tr>
+        {% for row in advice %}
+        <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] if row[4] else "—" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a class="button" href="/admin_dashboard">⬅ Back to Dashboard</a>
+    </div>
+</body>
+</html>

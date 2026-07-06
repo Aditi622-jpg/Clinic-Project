@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultation Complete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .feedback-container {
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffffee;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .feedback-container h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .feedback-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #6a89cc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+        .feedback-container input[type="submit"] {
+            padding: 12px 20px;
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .feedback-container input[type="submit"]:hover {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            transform: scale(1.05);
+        }
+        .qr-section {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consultation Completed ✅</h1>
+
+    <!-- QR Code Section -->
+    <div class="qr-section">
+        <p>Scan this QR code to confirm your consultation:</p>
+        <img src="{{ url_for('static', filename='qr_codes/' + str(reminder.id) + '.png') }}" alt="QR Code">
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="feedback-container">
+        <h2>We value your feedback 💬</h2>
+        <form action="/submit_feedback/{{ reminder.id }}" method="POST">
+            <label for="rating">Rate your experience:</label><br>
+            <select name="rating" id="rating" required>
+                <option value="">-- Select --</option>
+                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                <option value="4">⭐⭐⭐⭐ Good</option>
+                <option value="3">⭐⭐⭐ Average</option>
+                <option value="2">⭐⭐ Poor</option>
+                <option value="1">⭐ Very Poor</option>
+            </select>
+            <br><br>
+
+            <label for="comments">Your Comments:</label><br>
+            <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required></textarea>
+            <br>
+
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </div>
+</body>
+</html>

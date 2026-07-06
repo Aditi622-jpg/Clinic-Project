@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Reminders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Upcoming Reminders</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Appointment Date</th>
+            <th>Symptoms</th>
+            <th>Days Left</th>
+            <th>Action</th>
+        </tr>
+        {% for reminder in reminders %}
+        <tr class="{% if reminder.days_left is not none %}
+               {% if reminder.days_left == 0 %}today
+               {% elif 2 <= reminder.days_left <= 4 %}upcoming
+               {% elif reminder.days_left > 4 %}unknown
+               {% else %}overdue
+               {% endif %}
+           {% else %}unknown{% endif %}">
+            <td>{{ reminder.id }}</td>
+            <td>{{ reminder.name }}</td>
+            <td>{{ reminder.appointment_date }}</td>
+            <td>{{ reminder.symptoms }}</td>
+            <td>
+                {% if reminder.days_left is not none %}
+                    {{ reminder.days_left }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                <a class="edit-button" href="/edit/{{ reminder.id }}">Edit</a>
+                <a class="delete-button" href="/delete/{{ reminder.id }}">Delete</a>
+                <a class="complete-button" href="/mark_consultation/{{ reminder.id }}">Mark Consultation Complete</a>
+                <a class="reminder-button" href="/send_reminder/{{ reminder.id }}">🔔 Send Reminder</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div style="text-align:center;">
+        <a class="button" href="/admin_dashboard">⬅ Back to Dashboard</a>
+    </div>
+</body>
+</html>

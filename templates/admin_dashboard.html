@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Sunshine Clinic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .page-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffffee;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .clinic-info {
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #555;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #007bff, #3399ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: linear-gradient(to right, #3399ff, #007bff);
+        }
+        .logout {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .logout:hover {
+            background: #a71d2a;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <h1>Admin Dashboard</h1>
+        <p>Manage clinic follow‑ups</p>
+        <div class="clinic-info">
+            Sunshine Clinic, 123 MG Road, Bengaluru<br>
+            📞 +91‑9876543210
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Follow‑Up Reminders</h2>
+                <p>Check upcoming reminders for patient follow‑ups.</p>
+                <a href="/reminders" class="btn">Go</a>
+            </div>
+
+            <div class="card">
+                <h2>Doctor’s Advice</h2>
+                <p>View all treatment and rest instructions given by doctors.</p>
+                <a href="/view_doctor_advice" class="btn">View</a>
+            </div>
+        </div>
+
+        <a href="/logout" class="logout">Logout</a>
+
+        <footer>
+            <p>&copy; 2026 Sunshine Clinic | Admin Access Only</p>
+        </footer>
+    </div>
+</body>
+</html>

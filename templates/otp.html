@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        .otp-box {
+            background: #fff;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+        .countdown {
+            font-size: 20px;
+            color: red;
+            margin-top: 10px;
+        }
+        .resend-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .resend-btn:disabled {
+            background: grey;
+            cursor: not-allowed;
+        }
+        .demo-message {
+            background: #ffeaa7;
+            color: #2c3e50;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="otp-box">
+        <h2>Enter OTP</h2>
+
+        <!-- Demo disclaimer -->
+        <div class="demo-message">
+            ⚠️ This OTP is shown here for demo purposes only.<br>
+            In a real system, the OTP will be sent securely to the registered device of the admin.
+        </div>
+
+        <p>Your OTP is: <strong>{{ otp }}</strong></p>
+        <form method="post" action="/verify_otp">
+            <input type="text" name="otp" placeholder="Enter OTP" required>
+            <br><br>
+            <button type="submit">Verify</button>
+        </form>
+        <p class="countdown">OTP expires in <span id="timer">300</span> seconds</p>
+
+        <!-- Resend OTP button -->
+        <form method="post" action="/resend_otp">
+            <button id="resendBtn" class="resend-btn" disabled>Resend OTP</button>
+        </form>
+    </div>
+
+    <script>
+        // Countdown timer (5 minutes = 300 seconds)
+        let timeLeft = 300;
+        let timerElement = document.getElementById("timer");
+        let resendBtn = document.getElementById("resendBtn");
+
+        let countdown = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = "Expired";
+                resendBtn.disabled = false; // Enable resend button
+                alert("OTP has expired. Please request a new one.");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
