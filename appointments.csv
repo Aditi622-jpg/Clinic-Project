@@ -1,0 +1,5 @@
+name,age,gender,phone,appointment_date,appointment_time,symptoms,summary,missing_fields
+Rahul Sharma,28,Male,9876543210,2026-07-05,09:00,Fever and cough,"Rahul Sharma (28 years) booked an appointment on 2026-07-05 at 09:00. Reported symptoms: Fever and cough.",None
+Anita Verma,35,Female,9123456789,2026-07-06,10:00,Back pain,"Anita Verma (35 years) booked an appointment on 2026-07-06 at 10:00. Reported symptoms: Back pain.",None
+Sunil Kumar,42,Male,9988776655,2026-07-07,11:00,Headache,"Sunil Kumar (42 years) booked an appointment on 2026-07-07 at 11:00. Reported symptoms: Headache.",None
+Pooja Singh,30,Female,9876501234,2026-07-08,12:00,Stomach ache,"Pooja Singh (30 years) booked an appointment on 2026-07-08 at 12:00. Reported symptoms: Stomach ache.",None
