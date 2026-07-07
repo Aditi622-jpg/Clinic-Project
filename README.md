@@ -29,6 +29,12 @@ Patients can submit ratings and comments after consultation.
 ## Daily Appointments Chart  
 A dynamic bar chart is displayed in the admin appointments view, automatically counting appointments per real date from the database.
 
+## SunnyBot Chatbot 🤖
+  An AI chatbot embedded on the homepage that answers common patient questions.  
+  - Medium‑sized, colorful chat bubble labeled *Ask AI*  
+  - Toggleable chat window with patient input form  
+  - Provides instant responses about clinic timings, bookings, and reports 
+
 ## 🤖 AI Integration
 Automatic Summarization  
 When a patient books or edits an appointment, the system uses AI to generate a concise intake summary of their details and symptoms.
@@ -37,7 +43,7 @@ When a patient books or edits an appointment, the system uses AI to generate a c
 AI helps streamline patient records by providing structured summaries that can be used in consultation notes.
 
 ## 🔮 Future Scope
-Planned extensions include AI‑driven analytics for patient trends, automated treatment suggestions, and intelligent reminders.
+Planned extensions include AI‑driven analytics for patient trends, automated treatment suggestions, and intelligent reminders,Expanded chatbot knowledge base for more patient queries.
 
 ## 🛠️ Tech Stack
 Backend: Flask (Python)
