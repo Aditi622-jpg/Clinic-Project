@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- ✅ Chart.js added -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Appointments List</h1>
+    <table id="appointmentsTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Age</th><th>Gender</th>
+                <th>Phone</th><th>Date</th><th>Symptoms</th>
+                <th>Summary</th><th>Missing Fields</th>
+                <th>Source</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in appointments %}
+            <tr>
+                <td>{{ a[0] }}</td>
+                <td>{{ a[1] }}</td>
+                <td>{{ a[2] }}</td>
+                <td>{{ a[3] }}</td>
+                <td>{{ a[4] }}</td>
+                <td>{{ a[5] }}</td> <!-- ✅ Date -->
+                <td>{{ a[6] }}</td>
+                <td>{{ a[7] }}</td>
+                <td>{{ a[8] }}</td>
+                <td>
+                    {% if "[Online Taken]" in a[7] %}
+                        <span class="badge-online">Online Taken</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="edit-button" href="/edit/{{ a[0] }}">Edit</a>
+                    <a class="delete-button" href="/delete/{{ a[0] }}">Delete</a>
+                    <a class="complete-button" href="/mark_consultation/{{ a[0] }}">Mark Consultation Complete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align:center;">
+        <a class="button" href="/">Back to Home</a>
+    </div>
+
+    <!-- ✅ Chart section -->
+    <h2 style="text-align:center;">Daily Appointments Chart</h2>
+    <div style="width:70%; margin:0 auto;">
+        <canvas id="appointmentsChart"></canvas>
+    </div>
+
+    <script>
+        // Collect data from the appointments table
+        const rows = document.querySelectorAll("#appointmentsTable tbody tr"); 
+        const counts = {};
+
+        rows.forEach(row => {
+            const date = row.cells[5].innerText; // column 6 is Date
+            counts[date] = (counts[date] || 0) + 1;
+        });
+
+        const labels = Object.keys(counts);
+        const values = Object.values(counts);
+
+        // ✅ Bar chart for daily appointments
+        const ctx1 = document.getElementById('appointmentsChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Appointments per Day',
+                    data: values,
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)', // orange
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
