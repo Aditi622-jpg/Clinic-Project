@@ -91,4 +91,5 @@ pip install seaborn
 python generate_pdf.py
 python import_csv.py
 python main.py
+python database.py
 
