@@ -1,54 +1,54 @@
-🏥 AI-Powered Clinic Management and Patient Intake Summary System
+### 🏥 AI-Powered Clinic Management and Patient Intake Summary System
 
 An AI-powered full-stack web application built using Flask and SQLite that streamlines clinic management. The system enables patients to book appointments with OTP verification, allows administrators to manage appointments efficiently, assists doctors with AI-generated patient intake summaries, and provides reporting, reminders, analytics, and patient feedback management.
 
 ---
 
-✨ Features
+## ✨ Features
 
-👨‍⚕️ Patient Booking
+## 👨‍⚕️ Patient Booking
 
 - Book appointments online.
 - OTP verification before confirming appointments.
 - Secure storage of appointment details in the SQLite database.
 - Automatic AI-generated patient intake summary.
 
-🔐 Admin Dashboard
+## 🔐 Admin Dashboard
 
 - Secure administrator login.
 - View all appointments.
 - Add, edit, and delete appointments.
 - Mark consultations as completed.
 
-🩺 Doctor Consultation
+## 🩺 Doctor Consultation
 
 - View patient details.
 - Review AI-generated intake summaries.
 - Add treatment plans and doctor's advice.
 
-⏰ Appointment Reminder System
+## ⏰ Appointment Reminder System
 
 - Display upcoming appointments with the number of days remaining.
 - Highlight today's and overdue appointments.
 - Show an "Online Taken" badge for online bookings.
 
-📊 Dashboard Analytics
+## 📊 Dashboard Analytics
 
 - Interactive daily appointment bar chart using Chart.js.
 - Automatically counts appointments based on actual appointment dates stored in the database.
 
-📄 Reports
+## 📄 Reports
 
 - Export appointment records to CSV.
 - Generate PDF patient reports containing appointment details and doctor's advice.
 - QR code support for patient reports.
 
-⭐ Feedback System
+## ⭐ Feedback System
 
 - Patients can submit ratings and comments after their consultation.
 - Feedback is stored for future review and quality improvement.
 
-🤖 SunnyBot AI Chatbot
+## 🤖 SunnyBot AI Chatbot
 
 - AI chatbot integrated into the homepage.
 - Answers common patient questions.
@@ -56,7 +56,7 @@ An AI-powered full-stack web application built using Flask and SQLite that strea
 
 ---
 
-🤖 AI Integration
+## 🤖 AI Integration
 
 Automatic Patient Intake Summary
 
@@ -68,7 +68,7 @@ AI-generated summaries help doctors quickly understand patient cases and improve
 
 ---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Backend
 
@@ -97,7 +97,7 @@ Python Libraries
 
 ---
 
-📂 Project Structure
+## 📂 Project Structure
 
 Clinic-Project/
 │
@@ -130,14 +130,14 @@ Clinic-Project/
 
 ---
 
-🚀 Installation
+## 🚀 Installation
 
-1. Clone the Repository
+## 1. Clone the Repository
 
 git clone https://github.com/Aditi622-jpg/Clinic-Project.git
 cd Clinic-Project
 
-2. Install Dependencies
+## 2. Install Dependencies
 
 pip install flask
 pip install reportlab
@@ -146,7 +146,7 @@ pip install matplotlib
 
 ---
 
-▶️ Running the Project
+## ▶️ Running the Project
 
 Initialize the Database (if required)
 
@@ -166,7 +166,7 @@ http://127.0.0.1:5000
 
 ---
 
-🔮 Future Scope
+## 🔮 Future Scope
 
 - AI-powered patient trend analysis.
 - Intelligent appointment reminders.
@@ -179,7 +179,7 @@ http://127.0.0.1:5000
 
 ---
 
-🎓 Learning Outcomes
+## 🎓 Learning Outcomes
 
 This project demonstrates:
 
@@ -193,7 +193,7 @@ This project demonstrates:
 
 ---
 
-👩‍💻 Author
+## 👩‍💻 Author
 
 Aditi Bajpai
 
