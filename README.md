@@ -92,6 +92,3 @@ python generate_pdf.py
 python import_csv.py
 python main.py
 
-## 🌐 Run in browser
-Code
-http://127.0.0.1:5000/
