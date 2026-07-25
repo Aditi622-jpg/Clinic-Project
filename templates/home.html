@@ -2,74 +2,523 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Welcome to Sunshine Clinic</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
+
 <body class="homepage">
+
     <header class="header">
         <div class="logo">➕</div>
+
         <h1>Welcome to Sunshine Clinic</h1>
-        <p class="tagline">Your health, our priority</p>
+
+        <p class="tagline">
+            Your health, our priority
+        </p>
     </header>
 
-    <!-- Doctor Info -->
-    <section class="doctor-info" style="text-align:center; margin:20px auto; font-size:22px; font-weight:bold;">
-        <p>👩‍⚕️ Dr. Christina George (MBBS — Kasturba Medical College, Manipal; MD — AIIMS Jodhpur)</p>
-        <p>Sunshine Clinic, 123 MG Road, Bengaluru</p>
+
+    <!-- Doctor Information -->
+    <section
+        class="doctor-info"
+        style="
+            text-align:center;
+            margin:20px auto;
+            font-size:22px;
+            font-weight:bold;
+        "
+    >
+        <p>
+            👩‍⚕️ Dr. Christina George
+            (MBBS — Kasturba Medical College, Manipal;
+            MD — AIIMS Jodhpur)
+        </p>
+
+        <p>
+            Sunshine Clinic, 123 MG Road, Bengaluru
+        </p>
     </section>
 
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-text">
-            <h2>Compassionate Care, Modern Facilities</h2>
+
+            <h2>
+                Compassionate Care, Modern Facilities
+            </h2>
+
             <p>
-                Experience secure online appointment booking, AI-powered patient intake summaries,
-                OTP-protected admin access, and smart appointment reminders—all in one platform.
+                Experience secure online appointment booking,
+                AI-powered patient intake summaries,
+                OTP-protected admin access,
+                and smart appointment reminders—all in one platform.
             </p>
+
             <div class="buttons">
-                <a href="{{ url_for('book') }}" class="btn">📅 Book Appointment</a>
-                <a href="{{ url_for('admin_login') }}" class="btn">🔐 Admin Login</a>
+
+                <a
+                    href="{{ url_for('book') }}"
+                    class="btn"
+                >
+                    📅 Book Appointment
+                </a>
+
+                <a
+                    href="{{ url_for('admin_login') }}"
+                    class="btn"
+                >
+                    🔐 Admin Login
+                </a>
+
             </div>
         </div>
     </section>
 
+
+    <!-- Features Section -->
     <section class="features">
-        <div class="card">🤖 <h3>AI Intake Summary</h3><p>Smart patient data capture.</p></div>
-        <div class="card">🔒 <h3>Secure OTP Login</h3><p>Protect admin access.</p></div>
-        <div class="card">📅 <h3>Appointment Booking</h3><p>Easy online scheduling.</p></div>
-        <div class="card">⏰ <h3>Reminders</h3><p>Never miss an appointment.</p></div>
+
+        <div class="card">
+            🤖
+            <h3>AI Intake Summary</h3>
+            <p>Smart patient data capture.</p>
+        </div>
+
+        <div class="card">
+            🔒
+            <h3>Secure OTP Login</h3>
+            <p>Protect admin access.</p>
+        </div>
+
+        <div class="card">
+            📅
+            <h3>Appointment Booking</h3>
+            <p>Easy online scheduling.</p>
+        </div>
+
+        <div class="card">
+            ⏰
+            <h3>Reminders</h3>
+            <p>Never miss an appointment.</p>
+        </div>
+
     </section>
 
-    <!-- ✅ Chatbot Bubble -->
-    <section class="chatbot-bubble" style="position:fixed; right:20px; bottom:20px; width:120px; height:120px; background:linear-gradient(135deg, #ff9800, #4caf50, #2196f3); border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; cursor:pointer; color:white; font-weight:bold; font-size:18px; text-align:center;">
+
+    <!-- SunnyBot Floating Bubble -->
+    <button
+        type="button"
+        class="chatbot-bubble"
+        aria-label="Open SunnyBot"
+        style="
+            position:fixed;
+            right:20px;
+            bottom:20px;
+            width:120px;
+            height:120px;
+            background:linear-gradient(
+                135deg,
+                #ff9800,
+                #4caf50,
+                #2196f3
+            );
+            border:none;
+            border-radius:50%;
+            box-shadow:0 4px 12px rgba(0,0,0,0.3);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            color:white;
+            font-weight:bold;
+            font-size:18px;
+            text-align:center;
+            z-index:1000;
+        "
+    >
         Ask AI
-    </section>
+    </button>
 
-    <!-- ✅ Chat window (hidden until bubble clicked) -->
-    <div id="chat-window" style="display:none; position:fixed; right:160px; bottom:20px; width:320px; background:#f9f9f9; border:2px solid #ccc; border-radius:12px; padding:15px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
-        <h3 style="text-align:center;">🤖 Meet SunnyBot</h3>
-        <p style="text-align:center; font-size:14px; font-weight:bold;">Your AI assistant</p>
 
-        <form method="POST" action="/chatbot" style="margin-top:10px; text-align:center;">
-            <input type="text" name="message" placeholder="Ask a question..." required style="padding:8px; width:90%; border-radius:6px; border:1px solid #aaa;">
-            <button type="submit" style="margin-top:10px; padding:8px 12px; background:#4CAF50; color:white; border:none; border-radius:6px;">Send</button>
+    <!-- SunnyBot Chat Window -->
+    <div
+        id="chat-window"
+        style="
+            display:none;
+            position:fixed;
+            right:160px;
+            bottom:20px;
+            width:320px;
+            max-height:500px;
+            overflow-y:auto;
+            background:#f9f9f9;
+            border:2px solid #ccc;
+            border-radius:12px;
+            padding:15px;
+            box-shadow:0 4px 8px rgba(0,0,0,0.2);
+            z-index:1000;
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            "
+        >
+
+            <h3 style="margin:0;">
+                🤖 Meet SunnyBot
+            </h3>
+
+            <button
+                type="button"
+                id="close-chat"
+                aria-label="Close SunnyBot"
+                style="
+                    background:none;
+                    border:none;
+                    font-size:22px;
+                    cursor:pointer;
+                "
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <p
+            style="
+                text-align:center;
+                font-size:14px;
+                font-weight:bold;
+            "
+        >
+            Your AI clinic assistant
+        </p>
+
+
+        <!-- Messages -->
+        <div
+            id="chat-messages"
+            style="
+                min-height:100px;
+                max-height:250px;
+                overflow-y:auto;
+                margin-top:10px;
+                padding:10px;
+                background:white;
+                border:1px solid #ddd;
+                border-radius:8px;
+            "
+        >
+
+            <p style="margin:0 0 10px 0;">
+                <strong>SunnyBot:</strong>
+                Hello! How can I help you with the clinic today?
+            </p>
+
+        </div>
+
+
+        <!-- Chat Form -->
+        <form
+            id="chat-form"
+            style="
+                margin-top:10px;
+                text-align:center;
+            "
+        >
+
+            <input
+                id="chat-message"
+                name="message"
+                type="text"
+                placeholder="Ask a clinic-related question..."
+                autocomplete="off"
+                required
+                style="
+                    padding:8px;
+                    width:90%;
+                    border-radius:6px;
+                    border:1px solid #aaa;
+                "
+            >
+
+            <button
+                id="send-button"
+                type="submit"
+                style="
+                    margin-top:10px;
+                    padding:8px 12px;
+                    background:#4CAF50;
+                    color:white;
+                    border:none;
+                    border-radius:6px;
+                    cursor:pointer;
+                "
+            >
+                Send
+            </button>
+
         </form>
 
-        {% if reply %}
-            <p style="margin-top:10px; font-size:14px;"><strong>SunnyBot:</strong> {{ reply }}</p>
-        {% endif %}
     </div>
 
+
+    <!-- Footer -->
+    <footer
+        style="
+            text-align:center;
+            margin:40px auto;
+            font-size:16px;
+            font-weight:bold;
+        "
+    >
+        <p>
+            © 2026 Sunshine Clinic |
+            Flask • SQLite • AI • OTP Authentication
+        </p>
+    </footer>
+
+
     <script>
-        // Toggle chat window when bubble is clicked
-        document.querySelector('.chatbot-bubble').addEventListener('click', function() {
-            const chatWindow = document.getElementById('chat-window');
-            chatWindow.style.display = (chatWindow.style.display === 'none') ? 'block' : 'none';
+
+        const chatbotBubble =
+            document.querySelector(".chatbot-bubble");
+
+        const chatWindow =
+            document.getElementById("chat-window");
+
+        const closeChatButton =
+            document.getElementById("close-chat");
+
+        const chatForm =
+            document.getElementById("chat-form");
+
+        const messageInput =
+            document.getElementById("chat-message");
+
+        const messagesContainer =
+            document.getElementById("chat-messages");
+
+        const sendButton =
+            document.getElementById("send-button");
+
+
+        // Open SunnyBot
+        chatbotBubble.addEventListener("click", function () {
+
+            chatWindow.style.display = "block";
+
+            messageInput.focus();
+
         });
+
+
+        // Close SunnyBot only when X is clicked
+        closeChatButton.addEventListener("click", function () {
+
+            chatWindow.style.display = "none";
+
+        });
+
+
+        // Keep clicks inside chatbot from affecting outside elements
+        chatWindow.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+        });
+
+
+        // Add message to chat window
+        function addMessage(sender, text) {
+
+            const messageElement =
+                document.createElement("p");
+
+            messageElement.style.margin =
+                "0 0 10px 0";
+
+            const senderElement =
+                document.createElement("strong");
+
+            senderElement.textContent =
+                sender + ": ";
+
+            const textElement =
+                document.createTextNode(text);
+
+            messageElement.appendChild(
+                senderElement
+            );
+
+            messageElement.appendChild(
+                textElement
+            );
+
+            messagesContainer.appendChild(
+                messageElement
+            );
+
+            messagesContainer.scrollTop =
+                messagesContainer.scrollHeight;
+
+            return messageElement;
+        }
+
+
+        // Send SunnyBot message without refreshing page
+        chatForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                const message =
+                    messageInput.value.trim();
+
+                if (!message) {
+                    return;
+                }
+
+
+                addMessage("You", message);
+
+                messageInput.value = "";
+
+                sendButton.disabled = true;
+
+                sendButton.textContent =
+                    "Sending...";
+
+
+                const thinkingMessage =
+                    addMessage(
+                        "SunnyBot",
+                        "Thinking..."
+                    );
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/sunnybot",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    message: message
+                                })
+                            }
+                        );
+
+
+                    let data;
+
+                    try {
+
+                        data =
+                            await response.json();
+
+                    } catch (jsonError) {
+
+                        throw new Error(
+                            "Server returned an invalid response."
+                        );
+
+                    }
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.error ||
+                            data.message ||
+                            "SunnyBot request failed."
+                        );
+
+                    }
+
+
+                    const reply =
+                        data.reply ||
+                        data.response ||
+                        data.answer ||
+                        data.message ||
+                        "Sorry, I could not generate a response.";
+
+
+                    thinkingMessage.innerHTML = "";
+
+                    const senderElement =
+                        document.createElement("strong");
+
+                    senderElement.textContent =
+                        "SunnyBot: ";
+
+                    thinkingMessage.appendChild(
+                        senderElement
+                    );
+
+                    thinkingMessage.appendChild(
+                        document.createTextNode(reply)
+                    );
+
+
+                } catch (error) {
+
+                    thinkingMessage.innerHTML = "";
+
+                    const errorElement =
+                        document.createElement("span");
+
+                    errorElement.style.color =
+                        "red";
+
+                    errorElement.textContent =
+                        "SunnyBot error: " +
+                        error.message;
+
+                    thinkingMessage.appendChild(
+                        errorElement
+                    );
+
+                } finally {
+
+                    sendButton.disabled = false;
+
+                    sendButton.textContent =
+                        "Send";
+
+                    messageInput.focus();
+
+                    messagesContainer.scrollTop =
+                        messagesContainer.scrollHeight;
+
+                }
+
+            }
+        );
+
     </script>
 
-    <!-- Footer below features -->
-    <footer style="text-align:center; margin:40px auto; font-size:16px; font-weight:bold;">
-        <p>© 2026 Sunshine Clinic | Flask • SQLite • AI • OTP Authentication</p>
-    </footer>
 </body>
 </html>
