@@ -3,8 +3,9 @@ from flask import Flask, render_template, request, redirect, session, url_for, R
 import sqlite3
 from datetime import datetime, timedelta
 import random
-
+from sunnybot import sunnybot_bp
 app = Flask(__name__)
+app.register_blueprint(sunnybot_bp)
 app.secret_key = "your_secret_key"  # Needed for sessions
 
 # ---------- Database Helpers ----------
@@ -60,23 +61,6 @@ def get_reminders():
 def home():
     return render_template("home.html")
 
-# ---------- AI Chatbot ----------
-@app.route("/chatbot", methods=["POST"])
-def chatbot():
-    user_message = request.form["message"].lower()
-
-    # Simple rule-based responses
-    if "timing" in user_message:
-        reply = "Our clinic is open from 9 AM to 6 PM, Monday to Saturday."
-    elif "book" in user_message:
-        reply = "You can book an appointment online via the booking page."
-    elif "report" in user_message:
-        reply = "Reports can be collected from the admin desk or downloaded as PDF."
-    else:
-        reply = "I'm here to help! Please ask about clinic timings, booking, or reports."
-
-    # ✅ Reload homepage with chatbot reply
-    return render_template("home.html", reply=reply)
 
 # ---------- Patient Booking ----------
 @app.route("/book")
